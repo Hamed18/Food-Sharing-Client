@@ -1,4 +1,26 @@
 /*
+_id
+66d77d542eacc1fb9b61a088
+foodName
+"rice"
+foodImage
+"https://i.ibb.co/KWD96ct/v.jpg"
+foodQuantity
+10
+pickupLocation
+"ctg"
+expiredDateTime
+"2024-09-04T02:00:00.000Z"
+additionalNotes
+"plz come and take the food"
+donatorImage
+"https://lh3.googleusercontent.com/a/ACg8ocKsg2GTzbCK2_0G_F0Y6m9-BzaOUh…"
+donatorName
+"Hamed Hasan"
+donatorEmail
+"hamedcnec@gmail.com"
+foodStatus
+"available"
 
 https://i.ibb.co/mHG0CNZ/b.jpg
 https://i.ibb.co/FwT5zVM/c.jpg
