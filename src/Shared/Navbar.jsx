@@ -1,7 +1,19 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../src/assets/FoodLogo.png";
+import { useContext } from "react";
+import { AuthContext } from "../../src/Providers/AuthProviders";
+import userdefaultPic from "../../src/assets/user.png";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    logOut()
+    .then()
+    .catch();
+  }; 
+
+
   const navLinks = (
     <>
       <li>
@@ -60,11 +72,12 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
 
-        {/* <div className="navbar-end">
+        
+       <div className="navbar-end">
           {user ? (
-            <div className="flex mr-2">
-              <div className="w-10 rounded-full md:tooltip md:tooltip-left" data-tip={user.displayName}>
-                <img alt="Tailwind CSS Navbar component" src={user?.photoURL? user.photoURL : {userdefaultPic}} className="rounded-full mr-1" />
+            <div className="flex">
+              <div className="hidden w-10 rounded-full md:tooltip md:tooltip-left" data-tip={user.displayName}>
+                <img alt="Tailwind CSS Navbar component" src={user? user.photoURL : {userdefaultPic}} className="rounded-full mr-1" />
               </div>
               <button onClick={handleSignOut} className="btn btn-primary">
                 Sign Out
@@ -75,9 +88,8 @@ const Navbar = () => {
               <button className="btn btn-primary">Login</button>
             </Link>
           )}  
-		  <div className="w-10 rounded-full md:tooltip md:tooltip-left"></div>
-		    <img alt="Tailwind CSS Navbar component" src={userdefaultPic} className="rounded-full mr-1" />
-		  </div>  */}
+		    </div>
+
       </div>
     </div>
   );
