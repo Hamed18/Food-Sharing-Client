@@ -22,11 +22,11 @@ const Banner = () => {
                         <h2 className='text-6xl font-bold'>{title1}</h2>
                         <p>{subtitle1}</p>
                         <div>
-                            <Link to='/allspots'>
-                               <button className="btn btn-primary mr-5">Discover More</button>
+                            <Link to='/addFood'>
+                               <button className="btn btn-primary mr-5">Donate</button>
                             </Link>
-                            <Link to='/mylist'>
-                               <button className="btn btn-outline btn-secondary">Your List</button>
+                            <Link to='/availableFoods'>
+                               <button className="btn btn-outline btn-secondary">Available Now</button>
                             </Link>
                         </div>
                     </div>
