@@ -60,8 +60,7 @@ const AvailableFoodsCard = ({ AvailableFoods }) => {
           <div className="flex items-center text-gray-700 dark:text-gray-300">
             <FaClock className="mr-2 text-xl text-yellow-500" />
             <span className="font-medium">
-              Expires on: {shortExpiryDateTime} <br /> 
-			  ({remainingHours>0 ? `${remainingHours} h ` : ''}{remainingMinutes} m left)
+              Expires on: {shortExpiryDateTime} <br /> ({remainingHours>0 ? `${remainingHours} h ` : ''}{remainingMinutes} m left)
             </span>
           </div>
           <div className="flex items-center text-gray-700 dark:text-gray-300">
