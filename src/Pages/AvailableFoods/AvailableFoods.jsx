@@ -4,11 +4,17 @@ import { useEffect, useState } from "react";
 
 const AvailableFoods = () => {
   const [AvailableFoods,setAvailableFoods] = useState([]);
-  
+
   useEffect(() => {
 	fetch('http://localhost:3000/available')
 	.then(res => res.json())
-	.then(data => setAvailableFoods(data))  
+	.then((data) => {
+		// instead of props-dealing from child to parent, use this trick to filter available foods.
+		const remaining = data.filter(obj => obj.foodStatus === 'available');  
+		setAvailableFoods(remaining);
+	})
+	.catch(error => 
+		console.log('error in loading available foods', error));  
   }, [])
 
   return (
@@ -18,7 +24,6 @@ const AvailableFoods = () => {
         <AvailableFoodsCard
           key={AvailableFoods._id}
           AvailableFoods={AvailableFoods}
-		//   setAvailableFoods={setAvailableFoods}
         ></AvailableFoodsCard>
       ))
 	  }
