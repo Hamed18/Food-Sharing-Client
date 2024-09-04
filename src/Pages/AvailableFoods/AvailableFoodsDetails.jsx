@@ -43,6 +43,7 @@ const FoodDetailsPage = () => {
   // Calculate remaining time using js date-fns library
   const expiryDate = new Date(expiredDateTime);
   const currentTime = new Date();
+  console.log(currentTime);
 //   const remainingHours = differenceInHours(expiryDate, currentTime);
 //   const remainingMinutes = differenceInMinutes(expiryDate, currentTime) % 60;
   
@@ -50,12 +51,16 @@ const FoodDetailsPage = () => {
   const shortExpiryDateTime = format(expiryDate, 'dd/MM/yyyy HH:mm');
 
   const handleRequest = (id) => {
+
     fetch(`http://localhost:3000/available/${id}`,{
 		method: 'PATCH',
 		headers: {
 			'content-type': 'application/json'
 		},
-		body: JSON.stringify({foodStatus : 'requested'})
+		body: JSON.stringify({
+			foodStatus : 'requested',
+			requestDate : currentTime
+		})
 	})
 	.then(res => res.json())
 	.then(data => {
@@ -149,7 +154,7 @@ const FoodDetailsPage = () => {
 
               <Box>
                 <FormLabel htmlFor="additionalNotes">Additional Notes</FormLabel>
-                <Textarea id="additionalNotes" bg="gray.100"/>
+                <Textarea id="additionalNotes" bg="gray.100" placeholder="why are you requesting for this food?"/>
               </Box>
             </Stack>
           </DrawerBody>
@@ -162,7 +167,7 @@ const FoodDetailsPage = () => {
 			{/* if user click request button, redirct to availabel page */}
 			<Link to = '/availableFoods'>
 			  <Button colorScheme="blue" onClick={()=> handleRequest(_id)}>
-                {request==='true' ? 'Request' : 'Requested'}
+                {request===true ? 'Request' : 'Requested'}
               </Button>
 			</Link>
 

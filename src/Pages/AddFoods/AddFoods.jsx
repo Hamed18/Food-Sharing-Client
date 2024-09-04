@@ -15,9 +15,9 @@ const AddFood = () => {
     const pickupLocation = form.pickupLocation.value;
     const expiredDateTime = new Date(form.expiredDateTime.value); // Suitable for sorting
     const additionalNotes = form.additionalNotes.value;
-    const donatorImage = user.photoURL;
-    const donatorName = user.displayName;
-    const donatorEmail = user.email;
+    const donatorImage = user?.photoURL? user.photoURL : form.foodImage.value;
+    const donatorName = user?.displayName? user.displayName : form.foodName;
+    const donatorEmail = user?.email? user.email : 'unknown';
     const foodStatus = "available";
 
     const newFood = {
@@ -85,7 +85,7 @@ const AddFood = () => {
                   Donator Image
                 </label>
                 <img
-                //   src={user.photoURL}
+                  src={user.photoURL}
                   alt="Donator"
                   className="rounded-full h-20 w-20"
                 />
@@ -103,8 +103,8 @@ const AddFood = () => {
 				//   {
 				// 	user.displayName? defaultValue={user.displayName}: null
 				//   }
-				//   defaultValue={user.displayName}
-                  readOnly
+				  defaultValue={user.displayName}
+                    readOnly
                   className="w-full rounded-md border border-gray-300 dark:border-gray-700 focus:ring focus:ring-opacity-75 focus:ring-violet-600 dark:text-gray-50 dark:focus:ring-violet-600"
                 />
               </div>
@@ -118,7 +118,7 @@ const AddFood = () => {
                 <input
                   id="donatorEmail"
                   type="email"
-                //   defaultValue={user.email}
+                  defaultValue={user.email}
                   readOnly
                   className="w-full rounded-md border border-gray-300 dark:border-gray-700 focus:ring focus:ring-opacity-75 focus:ring-violet-600 dark:text-gray-50 dark:focus:ring-violet-600"
                 />
