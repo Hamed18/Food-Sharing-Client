@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ManageMyFoodCard = ({ manageFood, handleDelete, handleUpdate }) => {
   const {
     _id,
@@ -53,9 +55,11 @@ const ManageMyFoodCard = ({ manageFood, handleDelete, handleUpdate }) => {
       <td className="p-4 text-gray-600">{foodQuantity}</td>
       <td className="p-4 text-gray-600">{pickupLocation}</td>
       <th className="p-4">
-        <button className="btn btn-ghost btn-xs text-blue-500 hover:underline">
-          Update
-        </button>
+		<Link to={`manageMyFoods/${_id}`}>
+	      <button className="btn btn-ghost btn-xs text-blue-500 hover:underline">
+            Update
+          </button>
+		</Link>
       </th>
     </tr>
   );
