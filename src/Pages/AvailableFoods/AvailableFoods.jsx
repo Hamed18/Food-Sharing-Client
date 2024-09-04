@@ -1,8 +1,16 @@
 import { useLoaderData } from "react-router-dom";
 import AvailableFoodsCard from "./AvailableFoodsCard";
+import { useEffect, useState } from "react";
 
 const AvailableFoods = () => {
-  const AvailableFoods = useLoaderData();
+  const [AvailableFoods,setAvailableFoods] = useState([]);
+  
+  useEffect(() => {
+	fetch('http://localhost:3000/available')
+	.then(res => res.json())
+	.then(data => setAvailableFoods(data))  
+  }, [])
+
   return (
     <div className="md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
       {
@@ -10,6 +18,7 @@ const AvailableFoods = () => {
         <AvailableFoodsCard
           key={AvailableFoods._id}
           AvailableFoods={AvailableFoods}
+		//   setAvailableFoods={setAvailableFoods}
         ></AvailableFoodsCard>
       ))
 	  }

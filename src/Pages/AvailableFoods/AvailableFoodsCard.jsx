@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { format, differenceInHours, differenceInMinutes } from 'date-fns';
 // npm install date-fns
 
-const AvailableFoodsCard = ({ AvailableFoods }) => {
+const AvailableFoodsCard = ({ AvailableFoods}) => {
   const {
     _id,
     foodName,

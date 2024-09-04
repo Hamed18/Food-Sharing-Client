@@ -16,11 +16,14 @@ import {
   FormLabel
 } from '@chakra-ui/react';
 import { AuthContext } from '../../Providers/AuthProviders';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { format, differenceInHours, differenceInMinutes } from 'date-fns';
 
 const FoodDetailsPage = () => {
   const { user } = useContext(AuthContext);
+
+  const [request,Setrequest] = useState(true);  // toggle request button
+
   const { isOpen, onOpen, onClose } = useDisclosure(); // Chakra UI hooks for managing the drawer
   const [placement] = useState('right'); // Drawer placement
   
@@ -28,6 +31,7 @@ const FoodDetailsPage = () => {
     _id,
     foodName,
     foodImage,
+	foodStatus,
     foodQuantity,
     pickupLocation,
     expiredDateTime,
@@ -39,15 +43,30 @@ const FoodDetailsPage = () => {
   // Calculate remaining time using js date-fns library
   const expiryDate = new Date(expiredDateTime);
   const currentTime = new Date();
-  const remainingHours = differenceInHours(expiryDate, currentTime);
-  const remainingMinutes = differenceInMinutes(expiryDate, currentTime) % 60;
+//   const remainingHours = differenceInHours(expiryDate, currentTime);
+//   const remainingMinutes = differenceInMinutes(expiryDate, currentTime) % 60;
   
   // Shorten date/time format
   const shortExpiryDateTime = format(expiryDate, 'dd/MM/yyyy HH:mm');
 
-  const handleRequest = () => {
-    // 
-	onClose();
+  const handleRequest = (id) => {
+    fetch(`http://localhost:3000/available/${id}`,{
+		method: 'PATCH',
+		headers: {
+			'content-type': 'application/json'
+		},
+		body: JSON.stringify({foodStatus : 'requested'})
+	})
+	.then(res => res.json())
+	.then(data => {
+		console.log(data);
+		if (data.modifiedCount > 0){
+			Setrequest(false);
+		}
+
+	}) 
+
+	onClose();  // chakra ui modal
   };
 
   return (
@@ -74,9 +93,8 @@ const FoodDetailsPage = () => {
           mt={4}
           size="lg"
           variant="solid"
-          className="transition duration-200 ease-in-out"
-        >
-          Request
+          className="transition duration-200 ease-in-out">
+            Request
         </Button>
       </div>
 
@@ -140,9 +158,14 @@ const FoodDetailsPage = () => {
             <Button variant="outline" mr={3} onClick={onClose}>
               Cancel
             </Button>
-            <Button colorScheme="blue" onClick={handleRequest}>
-              Request
-            </Button>
+
+			{/* if user click request button, redirct to availabel page */}
+			<Link to = '/availableFoods'>
+			  <Button colorScheme="blue" onClick={()=> handleRequest(_id)}>
+                {request==='true' ? 'Request' : 'Requested'}
+              </Button>
+			</Link>
+
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
