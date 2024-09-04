@@ -31,7 +31,7 @@ const FoodDetailsPage = () => {
     _id,
     foodName,
     foodImage,
-	foodStatus,
+	  foodStatus,
     foodQuantity,
     pickupLocation,
     expiredDateTime,
