@@ -1,6 +1,9 @@
-# Food Sharing Site
+# Food Sharing Site (M-11 W)
+client side:
 https://food-sharing-authentication.web.app/
 
+server side:
+https://food-sharing-server-orpin.vercel.app/available
 
 # Packages:
 Sweet Alert: https://sweetalert2.github.io/#usage
