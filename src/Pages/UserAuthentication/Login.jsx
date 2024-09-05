@@ -1,12 +1,18 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import app from "../../Firebase/firebase.config";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+
+  //redirect
+  const location = useLocation();
+  console.log('location in the login page', location);
+  const navigate = useNavigate();
+
   // toggle show password
   const [showPassword, setShowPassword] = useState(false);
 
@@ -23,7 +29,9 @@ const Login = () => {
 
     signIn(email, password) // calling signIn function from Authprovider.jsx
       .then((result) => {
-       // console.log(result.user);
+        console.log(result.user);
+       // Auth redirect after login with password
+       navigate(location?.state? location.state : '/');  
       })
       .catch((error) => {
         console.error(error);
@@ -39,6 +47,8 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        // Auth redirect after login with password
+        navigate(location?.state? location.state : '/');  
       })
       .catch((error) => {
         console.log("error", error.message);

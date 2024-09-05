@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useContext, useState } from "react";
@@ -6,6 +6,11 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const {createUser,signIn} = useContext(AuthContext);
+
+  // auth redirect
+  const location = useLocation();
+  console.log('location in the register page',location);
+  const navigate = useNavigate();
 
   // Password Verification and Toggle Password
   const [registerError, setRegisterError] = useState("");
@@ -47,6 +52,8 @@ const Register = () => {
     .then(result =>{
       console.log(result.user)
       setSuccess("User Created Successfully");
+      // redirect 
+      navigate(location?.state? location.state : '/');
     })
     .catch(error =>{
       console.error(error)
