@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const ManageMyFoodCard = ({ manageFood, handleDelete, handleUpdate }) => {
+const ManageMyFoodCard = ({ manageFood, handleDelete }) => {
   const {
     _id,
     foodName,

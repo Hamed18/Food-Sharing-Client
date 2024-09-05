@@ -12,6 +12,7 @@ import PrivateRoutes from "../Route/PrivateRoutes";
 import UpdateMyFood from "../Pages/ManageMyFood/UpdateMyFood";
 import HomeCardDetails from "../Pages/Home/HomeCardDetails";
 import ErrorPage from "../Route/ErrorPage";
+import MyRequestCard from "../Pages/MyRequest/MyRequestCard";
 
 const routes = createBrowserRouter([
 	{

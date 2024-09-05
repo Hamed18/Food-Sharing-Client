@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
+import MyRequestCard from "./MyRequestCard";
 
 const MyRequest = () => {
 	const {user} = useContext(AuthContext);
@@ -20,7 +21,15 @@ const MyRequest = () => {
 	return (
 		<div>
 			<h3 className="text-center mt-8 mb-4">Your Requested Food Item is {MyRequest.length}</h3>
-		</div>
+		{
+			MyRequest.map(req => 
+				<MyRequestCard
+				  key = {req._id}
+				  req = {req}
+				></MyRequestCard>
+			)
+		}
+	    </div>
 	);
 };
 

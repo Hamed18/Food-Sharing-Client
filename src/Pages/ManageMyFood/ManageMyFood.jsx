@@ -1,6 +1,7 @@
 import { useContext,useState,useEffect } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import ManageMyFoodCard from "./ManageMyFoodCard";
+import { Link } from "react-router-dom";
 
 const ManageMyFood = () => {
 	const {user} = useContext(AuthContext);
@@ -38,10 +39,6 @@ const ManageMyFood = () => {
         }
     }
 
-	const handleUpdate = id => {
-
-	}
-
 	return (
 		<div className="w-full px-4 py-6">
 		<h2 className="text-3xl font-bold text-center mb-8 text-gray-700">
@@ -64,14 +61,37 @@ const ManageMyFood = () => {
 			  </tr>
 			</thead>
 			<tbody>
-			  {ManageMyFood.map((manageFood) => (
+			  {/* {ManageMyFood.map((manageFood) => (
 				<ManageMyFoodCard
 				  key={manageFood._id}
 				  manageFood={manageFood}
 				  handleDelete={handleDelete}
-				  handleUpdate={handleUpdate}
 				/>
-			  ))}
+			  ))} */}
+			  {
+				(ManageMyFood.length>0) ? (
+				<div>
+				  <h3 className="text-center font-bold text-3xl my-4">Your List</h3>
+                  { 
+				   ManageMyFood.map((manageFood) => (
+					<ManageMyFoodCard
+					  key={manageFood._id}
+					  manageFood={manageFood}
+					  handleDelete={handleDelete}
+					/>
+				   ))
+				  } 
+				</div>
+                )
+				: 
+				(
+				<div className="flex justify-center">
+                  <p className="text-center my-8 font-bold">Your List is empty! <br />
+					<Link to='/addFood' className="text-blue-400">Add New</Link>
+				  </p>
+				</div>  
+				)
+			}
 			</tbody>
 		  </table>
 		</div>

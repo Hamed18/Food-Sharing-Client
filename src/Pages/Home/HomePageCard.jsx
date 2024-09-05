@@ -19,6 +19,7 @@ const HomePageCard = ({ food }) => {
     foodStatus,
   } = food;
 
+
   // Calculate remaining time
   const expiryDate = new Date(expiredDateTime);
   const currentTime = new Date();
