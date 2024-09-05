@@ -10,15 +10,24 @@ import Register from "../Pages/UserAuthentication/Register";
 import AvailableFoodsDetails from "../Pages/AvailableFoods/AvailableFoodsDetails";
 import PrivateRoutes from "../Route/PrivateRoutes";
 import UpdateMyFood from "../Pages/ManageMyFood/UpdateMyFood";
+import HomeCardDetails from "../Pages/Home/HomeCardDetails";
+import ErrorPage from "../Route/ErrorPage";
 
 const routes = createBrowserRouter([
 	{
 	  path: "/",
 	  element: <Root></Root>,
+	  errorElement: <ErrorPage></ErrorPage>,
 	  children: [
 		{
 			path: "/",
 			element: <Home></Home>
+		//	loader: () => fetch('http://localhost:3000/available')
+		},
+		{
+			path: "/food/:id",
+			element: <PrivateRoutes><HomeCardDetails></HomeCardDetails></PrivateRoutes>,
+			loader: ({params}) => fetch(`http://localhost:3000/available/${params.id}`) 
 		},
 		{
 			path: "/availableFoods",

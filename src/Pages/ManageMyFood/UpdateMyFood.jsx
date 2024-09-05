@@ -66,6 +66,7 @@ const UpdateMyFood = () => {
           icon: "success",
           confirmButtonText: 'OK',
         });
+        
       }
     })
     .catch(err => {
