@@ -19,6 +19,10 @@ const Home = () => {
 		<div>
 			<Banner></Banner>
 			{/* About Us Section */}
+			<div className=" ">
+				<h3 className="text-center mt-4 font-bold">Join Us</h3><br />
+				<p className="text-center mb-8">Connect with others to share and receive food, reducing waste and feeding those in need</p>
+			</div>
 			<div className="mt-8 mb-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
 				{
                    foods.map((food) =>

@@ -2,6 +2,7 @@ import { useContext,useState,useEffect } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import ManageMyFoodCard from "./ManageMyFoodCard";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const ManageMyFood = () => {
 	const {user} = useContext(AuthContext);
@@ -31,9 +32,15 @@ const ManageMyFood = () => {
                 .then(data => {
                     console.log(data);
                     if(data.deletedCount > 0){
-                        alert('deleted successful');
-                        const remaining = ManageMyFood.filter(manageFood => manageFood._id !== id);
-                        setManageMyFood(remaining);
+                      //  alert('deleted successful');
+					  Swal.fire({
+						title: "Done!",
+						text: "Food Items Deleted Successfully",
+						icon: "success",
+						confirmButtonText: 'OK'
+					  });
+                      const remaining = ManageMyFood.filter(manageFood => manageFood._id !== id);
+                      setManageMyFood(remaining);
                     }
                 })
         }
@@ -61,17 +68,16 @@ const ManageMyFood = () => {
 			  </tr>
 			</thead>
 			<tbody>
-			  {/* {ManageMyFood.map((manageFood) => (
+			  {ManageMyFood.map((manageFood) => (
 				<ManageMyFoodCard
 				  key={manageFood._id}
 				  manageFood={manageFood}
 				  handleDelete={handleDelete}
 				/>
-			  ))} */}
-			  {
+			  ))}
+			  {/* {
 				(ManageMyFood.length>0) ? (
 				<div>
-				  <h3 className="text-center font-bold text-3xl my-4">Your List</h3>
                   { 
 				   ManageMyFood.map((manageFood) => (
 					<ManageMyFoodCard
@@ -91,7 +97,7 @@ const ManageMyFood = () => {
 				  </p>
 				</div>  
 				)
-			}
+			} */}
 			</tbody>
 		  </table>
 		</div>

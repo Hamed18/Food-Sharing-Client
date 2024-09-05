@@ -55,11 +55,11 @@ const ManageMyFoodCard = ({ manageFood, handleDelete }) => {
       <td className="p-4 text-gray-600">{foodQuantity}</td>
       <td className="p-4 text-gray-600">{pickupLocation}</td>
       <th className="p-4">
-		<Link to={`manageMyFoods/${_id}`}>
+	  	<Link to={`manageMyFoods/${_id}`}>
 	      <button className="btn btn-ghost btn-xs text-blue-500 hover:underline">
             Update
           </button>
-		</Link>
+	  	</Link>
       </th>
     </tr>
   );

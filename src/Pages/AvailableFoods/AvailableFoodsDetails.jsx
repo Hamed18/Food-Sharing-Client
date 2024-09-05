@@ -18,6 +18,7 @@ import {
 import { AuthContext } from '../../Providers/AuthProviders';
 import { Link, useLoaderData } from 'react-router-dom';
 import { format, differenceInHours, differenceInMinutes } from 'date-fns';
+import Swal from 'sweetalert2';
 
 const FoodDetailsPage = () => {
   const { user } = useContext(AuthContext);
@@ -67,6 +68,12 @@ const FoodDetailsPage = () => {
 		console.log(data);
 		if (data.modifiedCount > 0){
 			Setrequest(false);
+      Swal.fire({
+				title: "Done!",
+				text: "Food Item Requested Successfully",
+				icon: "success",
+				confirmButtonText: 'OK'
+			});
 		}
 
 	}) 
