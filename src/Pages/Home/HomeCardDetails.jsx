@@ -30,7 +30,7 @@ const HomeCardDetails = () => {
   const shortExpiryDateTime = format(expiryDate, "dd/MM/yyyy HH:mm");
 
   const handleRequest = (id) => {
-    fetch(`http://localhost:3000/available/${id}`, {
+    fetch(`https://food-sharing-server-orpin.vercel.app/available/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

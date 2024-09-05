@@ -5,7 +5,7 @@ import MyRequestCard from "./MyRequestCard";
 const MyRequest = () => {
 	const {user} = useContext(AuthContext);
 	const [MyRequest,setMyrequest] = useState([]);
-	const url = `http://localhost:3000/availablebyEmail/${user.email}`;
+	const url = `https://food-sharing-server-orpin.vercel.app/availablebyEmail/${user.email}`;
 	useEffect(() => {
 		fetch(url)
 		.then(res => res.json())
@@ -36,4 +36,4 @@ const MyRequest = () => {
 export default MyRequest;
 
 
-//	fetch(`http://localhost:3000/available?donatorEmail=${user.email}&foodStatus={requested}`);
+//	fetch(`https://food-sharing-server-orpin.vercel.app/available?donatorEmail=${user.email}&foodStatus={requested}`);

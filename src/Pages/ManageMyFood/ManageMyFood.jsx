@@ -8,7 +8,7 @@ const ManageMyFood = () => {
 	const {user} = useContext(AuthContext);
 	const [ManageMyFood,setManageMyFood] = useState([]);
 
-	const url = `http://localhost:3000/manageFoodByEmail/${user.email}`;
+	const url = `https://food-sharing-server-orpin.vercel.app/manageFoodByEmail/${user.email}`;
 	useEffect(() => {
 		fetch(url)
 		.then(res => res.json())
@@ -25,7 +25,7 @@ const ManageMyFood = () => {
 	const handleDelete = id => {
         const proceed = confirm('Are You sure you want to delete');
         if (proceed) {
-            fetch(`http://localhost:3000/available/${id}`, {
+            fetch(`https://food-sharing-server-orpin.vercel.app/available/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
@@ -15,9 +15,9 @@ const AddFood = () => {
     const pickupLocation = form.pickupLocation.value;
     const expiredDateTime = new Date(form.expiredDateTime.value); // Suitable for sorting
     const additionalNotes = form.additionalNotes.value;
-    const donatorImage = user?.photoURL? user.photoURL : form.foodImage.value;
-    const donatorName = user?.displayName? user.displayName : form.foodName;
-    const donatorEmail = user?.email? user.email : 'unknown';
+    const donatorImage = user?.photoURL ? user.photoURL : form.foodImage.value;
+    const donatorName = user?.displayName ? user.displayName : form.foodName;
+    const donatorEmail = user?.email ? user.email : "unknown";
     const foodStatus = "available";
 
     const newFood = {
@@ -34,33 +34,39 @@ const AddFood = () => {
     };
     console.log("New Food Data:", newFood);
 
-	// create 
-	fetch('http://localhost:3000/addFoods',{
-		method: 'POST',
-		headers: {
-			'content-type' : 'application/json'
-		},
-		body: JSON.stringify(newFood)
-	})
-	.then(res => res.json())
-	.then(data => {
-		console.log(data);
-		// sweet alert
-		if (data.insertedId){
-			Swal.fire({
-				title: "Gratitude!",
-				text: "Food Items Added Successfully",
-				icon: "success",
-				confirmButtonText: 'OK'
-			});
-		}
-
-	})
-
+    // create
+    fetch("https://food-sharing-server-orpin.vercel.app/addFoods", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newFood),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        // sweet alert
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Gratitude!",
+            text: "Food Items Added Successfully",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+        }
+      });
   };
 
   return (
     <div className="">
+      <div className="mt-8 mb-4 ">
+        <h1 className="text-center mt-4 font-bold">Join Us</h1>
+        <p className="text-center mb-8">
+          Connect with others to share and receive food, reducing waste and
+          feeding those in need
+        </p>
+      </div>
+
       <section className="p-6 bg-gray-100 dark:bg-gray-900">
         <form
           onSubmit={handleAddFood}
@@ -100,11 +106,11 @@ const AddFood = () => {
                 <input
                   id="donatorName"
                   type="text"
-				//   {
-				// 	user.displayName? defaultValue={user.displayName}: null
-				//   }
-				  defaultValue={user.displayName}
-                    readOnly
+                  //   {
+                  // 	user.displayName? defaultValue={user.displayName}: null
+                  //   }
+                  defaultValue={user.displayName}
+                  readOnly
                   className="w-full rounded-md border border-gray-300 dark:border-gray-700 focus:ring focus:ring-opacity-75 focus:ring-violet-600 dark:text-gray-50 dark:focus:ring-violet-600"
                 />
               </div>
