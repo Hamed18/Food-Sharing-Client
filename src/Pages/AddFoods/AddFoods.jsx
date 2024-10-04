@@ -35,26 +35,49 @@ const AddFood = () => {
     console.log("New Food Data:", newFood);
 
     // create
-    fetch("https://food-sharing-server-orpin.vercel.app/addFoods", {
+    // fetch("https://food-sharing-server-orpin.vercel.app/addFoods", {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(newFood),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     // sweet alert
+    //     if (data.insertedId) {
+    //       Swal.fire({
+    //         title: "Gratitude!",
+    //         text: "Food Items Added Successfully",
+    //         icon: "success",
+    //         confirmButtonText: "OK",
+    //       });
+    //     }
+    //   });
+
+      // users api  // returning a 404 error, meaning the server can't find the route you're trying to hit
+      const newUser = {
+        email : user.email,
+        role : "user",
+        type : "donate"
+      };
+      console.log('user data', newUser);
+      fetch("https://food-sharing-server-orpin.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newFood),
-    })
+      body: JSON.stringify(newUser),
+      })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        // sweet alert
-        if (data.insertedId) {
-          Swal.fire({
-            title: "Gratitude!",
-            text: "Food Items Added Successfully",
-            icon: "success",
-            confirmButtonText: "OK",
-          });
-        }
+      })
+      .catch((error) => {
+        console.error("Error: ", error);
       });
+
   };
 
   return (
