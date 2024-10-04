@@ -31,6 +31,9 @@ const Navbar = () => {
       <li>
         <NavLink to="/myRequest">My Request</NavLink>
       </li>
+      <li>
+        <NavLink to="/social">Rewards</NavLink>
+      </li>
     </>
   );
   return (

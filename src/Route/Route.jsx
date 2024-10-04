@@ -13,6 +13,7 @@ import UpdateMyFood from "../Pages/ManageMyFood/UpdateMyFood";
 import HomeCardDetails from "../Pages/Home/HomeCardDetails";
 import ErrorPage from "../Route/ErrorPage";
 import MyRequestCard from "../Pages/MyRequest/MyRequestCard";
+import Social from "../Pages/Social/Social";
 
 const routes = createBrowserRouter([
 	{
@@ -63,6 +64,11 @@ const routes = createBrowserRouter([
 		{
 			path: "/register",
 			element: <Register></Register>
+		},
+		// version 2
+        {
+			path: "/social",
+			element: <Social></Social>
 		}
 	  ]
 	},
