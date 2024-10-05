@@ -10,7 +10,7 @@ const Home = () => {
     fetch("https://food-sharing-server-orpin.vercel.app/available")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+     //   console.log(data);
         setFoods(data);
       });
   }, [foods]);

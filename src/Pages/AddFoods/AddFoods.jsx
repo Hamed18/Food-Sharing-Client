@@ -16,7 +16,7 @@ const AddFood = () => {
     const expiredDateTime = new Date(form.expiredDateTime.value); // Suitable for sorting
     const additionalNotes = form.additionalNotes.value;
     const donatorImage = user?.photoURL ? user.photoURL : form.foodImage.value;
-    const donatorName = user?.displayName ? user.displayName : form.foodName;
+    const donatorName = user?.displayName ? user.displayName : form.foodName.value;
     const donatorEmail = user?.email ? user.email : "unknown";
     const foodStatus = "available";
 
@@ -34,48 +34,26 @@ const AddFood = () => {
     };
     console.log("New Food Data:", newFood);
 
-    // create
-    // fetch("https://food-sharing-server-orpin.vercel.app/addFoods", {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(newFood),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     // sweet alert
-    //     if (data.insertedId) {
-    //       Swal.fire({
-    //         title: "Gratitude!",
-    //         text: "Food Items Added Successfully",
-    //         icon: "success",
-    //         confirmButtonText: "OK",
-    //       });
-    //     }
-    //   });
-
-      // users api  // returning a 404 error, meaning the server can't find the route you're trying to hit
-      const newUser = {
-        email : user.email,
-        role : "user",
-        type : "donate"
-      };
-      console.log('user data', newUser);
-      fetch("https://food-sharing-server-orpin.vercel.app/users", {
+  //  create
+    fetch("http://localhost:3000/addFoods", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newUser),
-      })
+      body: JSON.stringify(newFood),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-      })
-      .catch((error) => {
-        console.error("Error: ", error);
+        // sweet alert
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Gratitude!",
+            text: "Food Items Added Successfully",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+        }
       });
 
   };
