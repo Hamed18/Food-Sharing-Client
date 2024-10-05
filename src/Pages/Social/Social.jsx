@@ -1,16 +1,17 @@
 import RewardCriteria from "./RewardCriteria";
+import ShowReward from "./ShowReward";
 
 const Social = () => {
   return (
     <div>
       {/* Badge */}
       <section>
-		
-	  </section>
+        <ShowReward></ShowReward>
+      </section>
 
       {/* Reward criteria */}
       <section className="my-8">
-		<RewardCriteria></RewardCriteria>
+        <RewardCriteria></RewardCriteria>
       </section>
     </div>
   );

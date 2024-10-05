@@ -68,7 +68,7 @@ const routes = createBrowserRouter([
 		// version 2
         {
 			path: "/social",
-			element: <Social></Social>
+			element: <PrivateRoutes><Social></Social></PrivateRoutes>
 		}
 	  ]
 	},

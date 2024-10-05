@@ -7,7 +7,7 @@ const RewardCriteria = () => {
         <div className="container px-4 mx-auto">
           <div className="max-w-2xl mx-auto mb-8 text-center">
             <span className="font-bold tracking-wider uppercase dark:text-violet-600">
-              Be the social changemaker
+              View Reward Criteria 
             </span>
             <h2 className="text-4xl font-bold lg:text-5xl">Earn Badges!</h2>
           </div>
