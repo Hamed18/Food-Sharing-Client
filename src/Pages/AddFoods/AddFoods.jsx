@@ -53,7 +53,24 @@ const AddFood = () => {
             icon: "success",
             confirmButtonText: "OK",
           });
+
+          // update user info to add points
+          fetch(`http://localhost:3000/AllUsers/${user.email}`,{
+            method: 'PATCH',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify({type : 'donate'})
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            if (data.modifiedCount > 0){
+              console.log("points added");
+            }
+          }) 
         }
+
       });
 
   };
