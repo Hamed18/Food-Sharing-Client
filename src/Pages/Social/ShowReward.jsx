@@ -19,14 +19,10 @@ const ShowReward = () => {
           // Determine badge based on points
           const points = data.points;
           let badge = "";
-		  if (points === 0)
-			badge = "You haven't earn a badge yet!"
-          if (points > 0 && points < 50) 
-            badge = "The Changemaker";
-          else if (points >= 50 && points < 100) 
-            badge = "The Community Hero";
-          else if (points >= 100) 
-            badge = "The Philanthropist";
+          if (points === 0) badge = "You haven't earn a badge yet!";
+          if (points > 0 && points < 50) badge = "The Changemaker";
+          else if (points >= 50 && points < 100) badge = "The Community Hero";
+          else if (points >= 100) badge = "The Philanthropist";
           setBadge(badge);
         })
         .catch((error) => {
@@ -45,14 +41,22 @@ const ShowReward = () => {
   }
 
   return (
-    <div className="bg-green-500 rounded-xl py-4 text-white-500 mt-8">
-      <h3 className="text-center text-3xl">Congratulations!</h3>
+    <div className="bg-green-500 rounded-xl py-4 text-white mt-8">
+      {userData?.points ? (
+        <div>
+          <h3 className="text-center text-3xl">Congratulations!</h3>
+        </div>
+      ) : (
+        <div>
+          <p className="text-center">
+            You haven't added or requested any food items!
+          </p>
+        </div>
+      )}
       <h3 className="text-center text-3xl">
-        Your total Rewards Points: {userData.points}
+        Your total Rewards Points: {userData?.points || 0}
       </h3>
-      <h3 className="text-center text-3xl">
-        Badge: {badge}
-      </h3>
+      <h3 className="text-center text-3xl">Badge: {badge}</h3>
     </div>
   );
 };
