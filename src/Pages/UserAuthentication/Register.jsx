@@ -56,7 +56,6 @@ const Register = () => {
         const newUser = {
           email: result.user.email,
           role: "user",
-          type: "donate",
           points: 0,
           badges: [],
         };

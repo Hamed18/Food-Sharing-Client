@@ -47,6 +47,30 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        
+        // users api
+        const newUser = {
+          email: result.user.email,
+          role: "user",
+          points: 0,
+          badges: [],
+        };
+        console.log("user data", newUser);
+        fetch("http://localhost:3000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((error) => {
+            console.error("Error: ", error);
+          });
+
         // Auth redirect after login with password
         navigate(location?.state? location.state : '/');  
       })

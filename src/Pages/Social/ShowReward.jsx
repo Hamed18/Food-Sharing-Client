@@ -19,6 +19,8 @@ const ShowReward = () => {
           // Determine badge based on points
           const points = data.points;
           let badge = "";
+		  if (points === 0)
+			badge = "You haven't earn a badge yet!"
           if (points > 0 && points < 50) 
             badge = "The Changemaker";
           else if (points >= 50 && points < 100) 
