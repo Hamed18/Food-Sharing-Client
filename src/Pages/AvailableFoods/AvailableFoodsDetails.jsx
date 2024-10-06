@@ -76,6 +76,22 @@ const FoodDetailsPage = () => {
 			});
 		}
 
+    // update user data. add points
+    fetch(`http://localhost:3000/AllUsers/${user.email}`,{
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({type : 'rescue'})
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if (data.modifiedCount > 0){
+        console.log("points added");
+      }
+    }) 
+
 	}) 
 
 	onClose();  // chakra ui modal
@@ -174,8 +190,8 @@ const FoodDetailsPage = () => {
 			{/* if user click request button, redirct to availabel page */}
 			<Link to = '/availableFoods'>
 			  <Button colorScheme="blue" onClick={()=> handleRequest(_id)}>
-                {request===true ? 'Request' : 'Requested'}
-              </Button>
+            {request===true ? 'Request' : 'Requested'}
+        </Button>
 			</Link>
 
           </DrawerFooter>

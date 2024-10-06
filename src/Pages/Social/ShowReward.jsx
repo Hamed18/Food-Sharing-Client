@@ -44,19 +44,19 @@ const ShowReward = () => {
     <div className="bg-green-500 rounded-xl py-4 text-white mt-8">
       {userData?.points ? (
         <div>
-          <h3 className="text-center text-3xl">Congratulations!</h3>
+          <h3 className="text-center text-3xl py-2 font-bold">Congratulations!</h3>
         </div>
       ) : (
         <div>
-          <p className="text-center">
+          <p className="text-center py-2">
             You haven't added or requested any food items!
           </p>
         </div>
       )}
-      <h3 className="text-center text-3xl">
-        Your total Rewards Points: {userData?.points || 0}
+      <h3 className="text-center text-3xl py-2">
+        Your total Reward Points: {userData?.points || 0}
       </h3>
-      <h3 className="text-center text-3xl">Badge: {badge}</h3>
+      <h3 className="text-center text-3xl py-2 font-bold">Badge: {badge}</h3>
     </div>
   );
 };

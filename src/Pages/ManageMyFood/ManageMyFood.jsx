@@ -13,10 +13,10 @@ const ManageMyFood = () => {
 		fetch(url)
 		.then(res => res.json())
 		.then((data) => {
-			console.log('sucess in query',data);
+		//	console.log('sucess in query',data);
 			const remaining = data.filter(obj => obj.foodStatus === 'available');  
 			setManageMyFood(remaining);
-			console.log(ManageMyFood);
+		//	console.log(ManageMyFood);
 		})
 		.catch(err => console.log('error using query', err));
 	} ,[user.email])
