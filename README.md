@@ -5,6 +5,11 @@ https://food-sharing-authentication.web.app/
 server side:
 https://food-sharing-server-orpin.vercel.app/available
 
+### Latest Functionality:
+* if a user add a food item or request a food item he/she will get reward points
+* if user add a new food item, he/she will get 5 points.
+* if user request a food item, he/shw will get 2 points.
+
 # Packages:
 Sweet Alert: https://sweetalert2.github.io/#usage
 
