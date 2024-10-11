@@ -39,12 +39,12 @@ const Home = () => {
       </div>
 
 	  <div>
-      <h1 className="mb-4 text-3xl text-center font-bold">Foods Category</h1>
+      <h1 className="mb-8 text-3xl text-center font-bold">Foods Category</h1>
       <Category></Category>
     </div>
 
-	  <h1 className="mb-4 text-3xl text-center font-bold">Featured Foods</h1>
-      <div className="mt-8 mb-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+	  <h1 className="mb-8 text-3xl text-center font-bold">Featured Collections</h1>
+      <div className=" mb-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {foods.map((food) => (
           <HomePageCard key={food._id} food={food}></HomePageCard>
         ))}
