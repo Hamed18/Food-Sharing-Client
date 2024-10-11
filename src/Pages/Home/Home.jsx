@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   const [foods, setFoods] = useState([]);
   useEffect(() => {
-    fetch("https://food-sharing-server-orpin.vercel.app/available")
+    fetch("http://localhost:3000/available")
       .then((res) => res.json())
       .then((data) => {
      //   console.log(data);

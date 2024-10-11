@@ -53,7 +53,7 @@ const FoodDetailsPage = () => {
 
   const handleRequest = (id) => {
 
-    fetch(`https://food-sharing-server-orpin.vercel.app/available/${id}`,{
+    fetch(`http://localhost:3000/available/${id}`,{
 		method: 'PATCH',
 		headers: {
 			'content-type': 'application/json'

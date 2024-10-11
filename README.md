@@ -3,7 +3,7 @@ client side:
 https://food-sharing-authentication.web.app/
 
 server side:
-https://food-sharing-server-orpin.vercel.app/available
+http://localhost:3000/available
 
 ### Latest Functionality:
 * if a user add a food item or request a food item he/she will get reward points
@@ -11,6 +11,9 @@ https://food-sharing-server-orpin.vercel.app/available
 * if user request a food item, he/shw will get 2 points.
 
 # Packages:
+React - Responsive - Carousol :  https://github.com/leandrowd/react-responsive-carousel
+npm i react-responsive-carousel
+
 Sweet Alert: https://sweetalert2.github.io/#usage
 
 modern js date time library: https://date-fns.org/

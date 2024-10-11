@@ -10,7 +10,9 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ChakraProvider>
       <AuthProviders>
-        <RouterProvider router={routes}></RouterProvider>
+        <div className="max-w-screen-xl mx-auto">
+           <RouterProvider router={routes}></RouterProvider>
+        </div>
       </AuthProviders>
     </ChakraProvider>
   </StrictMode>

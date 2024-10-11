@@ -24,12 +24,12 @@ const routes = createBrowserRouter([
 		{
 			path: "/",
 			element: <Home></Home>
-		//	loader: () => fetch('https://food-sharing-server-orpin.vercel.app/available')
+		//	loader: () => fetch('http://localhost:3000/available')
 		},
 		{
 			path: "/food/:id",
 			element: <PrivateRoutes><HomeCardDetails></HomeCardDetails></PrivateRoutes>,
-			loader: ({params}) => fetch(`https://food-sharing-server-orpin.vercel.app/available/${params.id}`) 
+			loader: ({params}) => fetch(`http://localhost:3000/available/${params.id}`) 
 		},
 		{
 			path: "/availableFoods",
@@ -38,7 +38,7 @@ const routes = createBrowserRouter([
 		{
 			path: "/availableFoods/:id",
 			element: <PrivateRoutes><AvailableFoodsDetails></AvailableFoodsDetails></PrivateRoutes>,
-			loader: ({params}) => fetch(`https://food-sharing-server-orpin.vercel.app/available/${params.id}`) 
+			loader: ({params}) => fetch(`http://localhost:3000/available/${params.id}`) 
 		},
 		{
 			path: "/addFood",
@@ -51,7 +51,7 @@ const routes = createBrowserRouter([
 		{
 			path: "/manageMyFoods/:id/:id",
 			element: <PrivateRoutes><UpdateMyFood></UpdateMyFood></PrivateRoutes>,
-			loader: ({params}) => fetch(`https://food-sharing-server-orpin.vercel.app/manageFoodByEmail/${params.id}/${params.id}`)
+			loader: ({params}) => fetch(`http://localhost:3000/manageFoodByEmail/${params.id}/${params.id}`)
 		},
 		{
 			path: "/myRequest",

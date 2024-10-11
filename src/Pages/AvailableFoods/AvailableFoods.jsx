@@ -6,7 +6,7 @@ const AvailableFoods = () => {
   const [AvailableFoods,setAvailableFoods] = useState([]);
 
   useEffect(() => {
-	fetch('https://food-sharing-server-orpin.vercel.app/available')
+	fetch('http://localhost:3000/available')
 	.then(res => res.json())
 	.then((data) => {
 		// instead of props-dealing from child to parent, use this trick to filter available foods.
