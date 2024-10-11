@@ -3,6 +3,7 @@ import Banner from "../../Shared/Banner";
 import Navbar from "../../Shared/Navbar";
 import HomePageCard from "./HomePageCard";
 import { Link } from "react-router-dom";
+import Category from "./Category";
 
 const Home = () => {
   const [foods, setFoods] = useState([]);
@@ -36,6 +37,12 @@ const Home = () => {
           in a quest to make the “World Hunger Free.” 
         </p>
       </div>
+
+	  <div>
+      <h1 className="mb-4 text-3xl text-center font-bold">Foods Category</h1>
+      <Category></Category>
+    </div>
+
 	  <h1 className="mb-4 text-3xl text-center font-bold">Featured Foods</h1>
       <div className="mt-8 mb-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {foods.map((food) => (

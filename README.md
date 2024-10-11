@@ -14,6 +14,9 @@ http://localhost:3000/available
 React - Responsive - Carousol :  https://github.com/leandrowd/react-responsive-carousel
 npm i react-responsive-carousel
 
+Swiper Js: https://swiperjs.com/get-started
+npm install swiper
+
 Sweet Alert: https://sweetalert2.github.io/#usage
 
 modern js date time library: https://date-fns.org/

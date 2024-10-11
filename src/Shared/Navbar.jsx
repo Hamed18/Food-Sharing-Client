@@ -9,10 +9,13 @@ const Navbar = () => {
 
   const handleSignOut = () => {
     logOut()
-    .then()
-    .catch();
-  }; 
-
+      .then(() => {
+        // Handle successful sign-out
+      })
+      .catch((error) => {
+        console.error("Error signing out: ", error);
+      });
+  };
 
   const navLinks = (
     <>
@@ -36,12 +39,14 @@ const Navbar = () => {
       </li>
     </>
   );
+
   return (
-    <div className="">
+    <div className="navbar fixed z-10 bg-opacity-30 bg-black text-white max-w-screen-xl">
       <div className="navbar bg-base-100">
         <div className="navbar-start">
+          {/* Dropdown for mobile view */}
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -56,35 +61,49 @@ const Navbar = () => {
                   d="M4 6h16M4 12h8m-8 6h16"
                 />
               </svg>
-            </div>
+            </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow"
             >
               {navLinks}
             </ul>
           </div>
-          <a className="flex items-center btn btn-ghost text-2xl font-bold">
-            <img src={logo} alt="ReeFood Logo" className="w-8 h-8 mr-" />
+          {/* Logo */}
+          <Link to="/" className="flex items-center btn btn-ghost text-2xl font-bold">
+            <img src={logo} alt="ReeFood Logo" className="w-8 h-8 mr-1" />
             <span className="text-green-300">Ree</span>
             <span className="text-green-600 font-bold ml-[-9px]">Food</span>
-          </a>
+          </Link>
         </div>
 
+        {/* Nav Links for larger screens */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
 
-        
-       <div className="navbar-end">
+        {/* User Section */}
+        <div className="navbar-end">
           {user ? (
-            <div className="flex">
-              {/* {
-                user.photoURL && 
-                <div className="hidden w-10 rounded-full md:tooltip md:tooltip-left" data-tip={user.displayName}>
-                  <img alt="Tailwind CSS Navbar component" src={user.photoURL} className="rounded-full mr-1" />
-                </div>  
-              } */}
+            <div className="flex items-center">
+              {user.photoURL ? (
+                <div
+                  className="w-10 rounded-full tooltip tooltip-left"
+                  data-tip={user.displayName || "User"}
+                >
+                  <img
+                    alt="User profile"
+                    src={user.photoURL}
+                    className="rounded-full mr-2"
+                  />
+                </div>
+              ) : (
+                <img
+                  alt="Default user"
+                  src={userdefaultPic}
+                  className="w-10 h-10 rounded-full mr-2"
+                />
+              )}
               <button onClick={handleSignOut} className="btn btn-primary">
                 Sign Out
               </button>
@@ -93,9 +112,8 @@ const Navbar = () => {
             <Link to="/login">
               <button className="btn btn-primary">Login</button>
             </Link>
-          )}  
-		    </div>
-
+          )}
+        </div>
       </div>
     </div>
   );
